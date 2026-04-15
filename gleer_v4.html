@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLEER · 24시 무인 뷰티샵 가맹점 모집</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #FF3D8A;
+    --pink-light: #FFB6D3;
+    --pink-pale: #FFF0F6;
+    --pink-mid: #FF6FAD;
+    --white: #FFFFFF;
+    --dark: #1A0A10;
+    --gray: #6B6B6B;
+    --gray-light: #F7F7F7;
+    --border: #F0D6E3;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans KR', sans-serif; color: var(--dark); background: var(--white); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 0 5%;
+    height: 68px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px; font-weight:900; color: var(--pink);
+    letter-spacing: -1px;
+  }
+  .nav-logo span { font-size:11px; font-family:'Noto Sans KR',sans-serif; color:var(--gray); display:block; font-weight:400; letter-spacing:2px; margin-top:-4px; }
+  .nav-links { display:flex; gap:32px; }
+  .nav-links a { text-decoration:none; font-size:13px; font-weight:500; color:var(--dark); transition: color 0.2s; }
+  .nav-links a:hover { color:var(--pink); }
+  .nav-cta {
+    background: var(--pink); color: white; border:none; cursor:pointer;
+    padding: 10px 24px; border-radius:50px; font-size:13px; font-weight:700;
+    font-family:'Noto Sans KR',sans-serif;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration:none;
+  }
+  .nav-cta:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(255,61,138,0.35); }
+
+  /* HERO */
+  .hero {
+    position:relative; min-height:100vh; display:flex; align-items:center;
+    padding: 120px 5% 80px;
+    overflow:hidden;
+  }
+  .hero-bg {
+    position:absolute; inset:0;
+    background: linear-gradient(135deg, #fff5f9 0%, #ffe8f3 40%, #ffd6eb 100%);
+  }
+  .hero-img-area {
+    position:absolute; right:0; top:0; bottom:0; width:52%;
+    background: linear-gradient(135deg, #ffe0ef 0%, #ffc8e4 40%, #ffb0d8 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 20%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hero-img-placeholder {
+    font-size:14px; font-weight:700; color:rgba(255,61,138,0.4); letter-spacing:3px;
+  }
+  .hero-img {
+    position:absolute; right:0; top:0; bottom:0; width:58%;
+    object-fit:cover; object-position: left center;
+    mask-image: linear-gradient(to right, transparent 0%, black 20%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);
+    display:none;
+  }
+  .hero-content { position:relative; z-index:2; max-width:560px; }
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:8px;
+    background:white; border:1.5px solid var(--pink-light);
+    padding:6px 16px; border-radius:50px; margin-bottom:28px;
+    font-size:12px; font-weight:700; color:var(--pink);
+    letter-spacing:1px;
+  }
+  .hero-badge::before { content:'●'; font-size:8px; animation: blink 1.5s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .hero h1 {
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight:900; line-height:1.15;
+    color: var(--dark); margin-bottom:12px;
+    letter-spacing:-2px;
+  }
+  .hero h1 em { color:var(--pink); font-style:normal; display:block; }
+  .hero-sub {
+    font-size:16px; color:var(--gray); line-height:1.8;
+    margin-bottom:40px; font-weight:400;
+  }
+  .hero-stats {
+    display:flex; gap:24px; margin-bottom:40px; flex-wrap:wrap;
+  }
+  .hero-stat {
+    background:white; border-radius:16px; padding:18px 24px;
+    box-shadow:0 4px 20px rgba(255,61,138,0.1);
+    text-align:center;
+  }
+  .hero-stat strong { display:block; font-size:28px; font-weight:900; color:var(--pink); line-height:1; }
+  .hero-stat span { font-size:11px; color:var(--gray); font-weight:500; margin-top:4px; display:block; }
+  .hero-btns { display:flex; gap:12px; }
+  .btn-primary {
+    background: var(--pink); color:white; text-decoration:none;
+    padding:16px 36px; border-radius:50px; font-weight:700; font-size:15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display:inline-block;
+  }
+  .btn-primary:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(255,61,138,0.4); }
+  .btn-outline {
+    border:2px solid var(--pink); color:var(--pink); text-decoration:none;
+    padding:14px 28px; border-radius:50px; font-weight:700; font-size:15px;
+    transition:all 0.2s; display:inline-block;
+  }
+  .btn-outline:hover { background:var(--pink); color:white; }
+
+  /* SECTIONS COMMON */
+  section { padding:100px 5%; }
+  .section-tag {
+    font-size:11px; font-weight:700; color:var(--pink); letter-spacing:3px;
+    text-transform:uppercase; margin-bottom:12px; display:block;
+  }
+  .section-title {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight:900; line-height:1.25; letter-spacing:-1.5px;
+    margin-bottom:16px;
+  }
+  .section-desc { font-size:16px; color:var(--gray); line-height:1.8; max-width:600px; }
+  .center { text-align:center; }
+  .center .section-desc { margin:0 auto; }
+
+  /* MARKET SECTION */
+  .market { background: var(--white); }
+  .market .section-tag { color:var(--pink); }
+  .market .section-title { color:var(--dark); }
+  .market .section-desc { color: var(--gray); }
+  .market-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:60px; }
+  .market-card {
+    background: linear-gradient(135deg, #FF3D8A 0%, #FF6FAD 100%);
+    border-radius:24px; padding:40px 32px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 8px 32px rgba(255,61,138,0.2);
+  }
+  .market-card:hover { transform:translateY(-6px); box-shadow:0 20px 60px rgba(255,61,138,0.35); }
+  .market-card .num {
+    font-size:52px; font-weight:900; color:white; line-height:1;
+    font-family:'Bebas Neue',sans-serif; margin-bottom:8px;
+  }
+  .market-card h3 { font-size:18px; font-weight:700; color:white; margin-bottom:12px; }
+  .market-card p { font-size:14px; color:rgba(255,255,255,0.85); line-height:1.7; }
+
+  /* WHY BEAUTY */
+  .why-beauty { background: var(--white); }
+  .why-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; margin-top:60px; }
+  .why-image-wrap { border-radius:32px; overflow:hidden; box-shadow:0 24px 64px rgba(255,61,138,0.2); min-height:360px; background:linear-gradient(135deg,#ffe8f3,#ffd0e8); display:flex; align-items:center; justify-content:center; }
+  .why-image-wrap .img-label { font-size:13px; font-weight:700; color:rgba(255,61,138,0.4); letter-spacing:3px; }
+  .why-image-wrap img { width:100%; display:block; }
+  .why-points { display:flex; flex-direction:column; gap:28px; }
+  .why-point {
+    display:flex; gap:20px; align-items:flex-start;
+    padding:24px; border-radius:20px;
+    border:1px solid var(--border);
+    transition:border-color 0.2s, background 0.2s;
+  }
+  .why-point:hover { border-color:var(--pink-light); background:var(--pink-pale); }
+  .why-icon { font-size:28px; flex-shrink:0; width:52px; height:52px; display:flex; align-items:center; justify-content:center; background:var(--pink-pale); border-radius:14px; }
+  .why-point h4 { font-size:16px; font-weight:700; margin-bottom:6px; }
+  .why-point p { font-size:13px; color:var(--gray); line-height:1.7; }
+
+  /* GLEER ADVANTAGE */
+  .advantage { background: var(--pink-pale); }
+  .adv-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:32px; margin-top:60px; }
+  .adv-card {
+    background:white; border-radius:28px; overflow:hidden;
+    box-shadow:0 8px 32px rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .adv-card:hover { transform:translateY(-8px); box-shadow:0 20px 60px rgba(255,61,138,0.18); }
+  .adv-card-img { width:100%; height:240px; object-fit:cover; display:block; }
+  .adv-img-placeholder { width:100%; height:200px; background:linear-gradient(135deg,#f5f5f5,#ebebeb); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:#bbb; letter-spacing:3px; }
+  .adv-card-body { padding:28px 32px; }
+  .adv-num { font-size:11px; font-weight:700; color:var(--pink); letter-spacing:2px; margin-bottom:8px; }
+  .adv-card-body h3 { font-size:20px; font-weight:700; margin-bottom:10px; letter-spacing:-0.5px; }
+  .adv-card-body p { font-size:14px; color:var(--gray); line-height:1.7; }
+
+
+  /* PROCESS */
+  .process { background: linear-gradient(160deg, #fff5f9 0%, #ffe0ef 100%); }
+  .process-steps { display:grid; grid-template-columns:repeat(6,1fr); gap:0; margin-top:60px; position:relative; }
+  .process-steps::before {
+    content:''; position:absolute; top:32px; left:8%; right:8%; height:2px;
+    background: linear-gradient(to right, var(--pink-light), var(--pink));
+    z-index:0;
+  }
+  .step { text-align:center; position:relative; z-index:1; padding:0 8px; }
+  .step-num {
+    width:64px; height:64px; border-radius:50%; background:var(--pink); color:white;
+    font-size:18px; font-weight:900; display:flex; align-items:center; justify-content:center;
+    margin:0 auto 16px; box-shadow:0 8px 24px rgba(255,61,138,0.4);
+    font-family:'Bebas Neue',sans-serif;
+  }
+  .step h4 { font-size:13px; font-weight:700; margin-bottom:6px; }
+  .step p { font-size:11px; color:var(--gray); line-height:1.5; }
+
+  /* ROI SECTION */
+  .roi { background: linear-gradient(160deg, #fff0f6 0%, #ffe4f0 100%); }
+  .roi .section-title { color:var(--dark); }
+  .roi .section-tag { color:var(--pink); }
+  .roi .section-desc { color:var(--gray); }
+  .roi-layout { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; margin-top:60px; }
+  .roi-card {
+    background:white; border:1px solid var(--border);
+    border-radius:28px; padding:40px;
+    box-shadow: 0 8px 32px rgba(255,61,138,0.08);
+  }
+  .roi-card h3 { font-size:14px; font-weight:700; color:var(--pink); letter-spacing:1px; text-transform:uppercase; margin-bottom:24px; }
+  .roi-item { display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-bottom:1px solid var(--border); }
+  .roi-item:last-child { border-bottom:none; }
+  .roi-item .label { font-size:14px; color:var(--gray); }
+  .roi-item .value { font-size:20px; font-weight:900; color:var(--pink); }
+  .roi-highlight {
+    background: linear-gradient(135deg, var(--pink), #FF8EC2);
+    border-radius:28px; padding:40px; text-align:center;
+  }
+  .roi-highlight .big { font-size:72px; font-weight:900; color:white; line-height:1; font-family:'Bebas Neue',sans-serif; }
+  .roi-highlight .label { font-size:16px; color:rgba(255,255,255,0.85); margin-top:8px; font-weight:500; }
+  .roi-highlight .note { font-size:13px; color:rgba(255,255,255,0.6); margin-top:16px; line-height:1.6; }
+
+  /* ANALYSIS SECTION */
+  .analysis { background:white; }
+  .analysis-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:60px; }
+  .analysis-card {
+    text-align:center; padding:40px 24px;
+    border:1.5px solid var(--border); border-radius:24px;
+    transition:all 0.3s;
+  }
+  .analysis-card:hover { border-color:var(--pink); transform:translateY(-6px); box-shadow:0 16px 40px rgba(255,61,138,0.12); }
+  .analysis-card .icon { font-size:36px; margin-bottom:16px; display:block; }
+  .analysis-card h4 { font-size:16px; font-weight:700; margin-bottom:8px; }
+  .analysis-card p { font-size:13px; color:var(--gray); line-height:1.6; }
+
+  /* CONTACT / FORM */
+  .contact {
+    background: linear-gradient(135deg, var(--pink) 0%, #FF8EC2 50%, #FFB6D3 100%);
+    padding:100px 5%;
+  }
+  .contact .section-title { color:white; }
+  .contact .section-tag { color:rgba(255,255,255,0.7); }
+  .contact .section-desc { color:rgba(255,255,255,0.85); }
+  .contact-layout { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; margin-top:60px; }
+  .contact-info { color:white; }
+  .contact-info h3 { font-size:20px; font-weight:700; margin-bottom:24px; }
+  .contact-detail { display:flex; align-items:center; gap:12px; margin-bottom:16px; font-size:15px; }
+  .contact-detail .ico { font-size:20px; }
+  .contact-form {
+    background:white; border-radius:32px; padding:48px;
+    box-shadow:0 24px 80px rgba(0,0,0,0.15);
+  }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+  .form-group { margin-bottom:16px; }
+  .form-group label { display:block; font-size:13px; font-weight:700; color:var(--dark); margin-bottom:6px; }
+  .form-group input, .form-group select, .form-group textarea {
+    width:100%; padding:14px 16px; border:1.5px solid var(--border);
+    border-radius:12px; font-family:'Noto Sans KR',sans-serif;
+    font-size:14px; color:var(--dark);
+    transition:border-color 0.2s;
+    outline:none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color:var(--pink);
+  }
+  .form-group textarea { resize:vertical; min-height:100px; }
+  .form-submit {
+    width:100%; padding:18px; background:var(--pink); color:white; border:none;
+    border-radius:16px; font-size:16px; font-weight:700; cursor:pointer;
+    font-family:'Noto Sans KR',sans-serif;
+    transition:transform 0.2s, box-shadow 0.2s;
+    margin-top:8px;
+  }
+  .form-submit:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(255,61,138,0.5); }
+  .form-note { font-size:11px; color:var(--gray); text-align:center; margin-top:12px; }
+
+  /* FOOTER */
+  footer {
+    background:var(--dark); color:rgba(255,255,255,0.45);
+    padding:48px 5%; font-size:13px; line-height:1.8;
+    border-top:1px solid rgba(255,255,255,0.06);
+  }
+  .footer-inner { display:flex; justify-content:space-between; align-items:flex-start; gap:40px; flex-wrap:wrap; }
+  .footer-logo { font-family:'Bebas Neue',sans-serif; font-size:32px; font-weight:900; color:var(--pink); margin-bottom:12px; }
+  .footer-info p { margin-bottom:4px; }
+  .footer-right { text-align:right; }
+
+  /* SCROLL ANIMATIONS */
+  .fade-up { opacity:1; transform:translateY(0); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity:1; transform:translateY(0); }
+
+  @media(max-width:768px) {
+    nav .nav-links { display:none; }
+    .hero-img { width:100%; opacity:0.3; }
+    .hero-content { max-width:100%; }
+    .market-grid, .adv-grid, .why-grid, .roi-layout, .contact-layout { grid-template-columns:1fr; }
+    .analysis-grid { grid-template-columns:repeat(2,1fr); }
+    .process-steps { grid-template-columns:repeat(2,1fr); }
+    .process-steps::before { display:none; }
+    .form-row { grid-template-columns:1fr; }
+  }
+
+  /* PRODUCT LINEUP */
+  .products { background: var(--white); }
+  .product-tabs { display:flex; gap:12px; margin:40px 0 32px; flex-wrap:wrap; }
+  .prod-tab {
+    padding:10px 24px; border-radius:50px; border:2px solid var(--border);
+    font-size:13px; font-weight:700; cursor:pointer; transition:all 0.2s;
+    background:transparent; color:var(--gray); font-family:'Noto Sans KR',sans-serif;
+  }
+  .prod-tab.active, .prod-tab:hover { background:var(--pink); color:white; border-color:var(--pink); }
+  .product-panel { display:none; }
+  .product-panel.active { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+  .product-img-wrap {
+    border-radius:28px; overflow:hidden;
+    box-shadow:0 24px 64px rgba(255,61,138,0.18);
+    aspect-ratio:4/3; 
+  }
+  .product-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
+  .product-info { }
+  .product-badge {
+    display:inline-block; background:var(--pink-pale); color:var(--pink);
+    font-size:11px; font-weight:700; letter-spacing:2px; padding:6px 14px;
+    border-radius:50px; margin-bottom:16px; border:1px solid var(--pink-light);
+  }
+  .product-info h3 { font-size:28px; font-weight:900; letter-spacing:-1px; margin-bottom:12px; }
+  .product-info .product-desc { font-size:15px; color:var(--gray); line-height:1.8; margin-bottom:24px; }
+  .product-items { display:flex; flex-direction:column; gap:10px; }
+  .product-item {
+    display:flex; align-items:center; gap:12px;
+    padding:12px 16px; border-radius:12px; background:var(--pink-pale);
+    font-size:14px; font-weight:500;
+  }
+  .product-item::before { content:'✦'; color:var(--pink); font-size:10px; flex-shrink:0; }
+
+  /* TARGET SECTION */
+  .target { background: var(--dark); overflow:hidden; }
+  .target .section-title { color:white; }
+  .target .section-tag { color:var(--pink-light); }
+  .target .section-desc { color:rgba(255,255,255,0.6); }
+  .target-layout { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; margin-top:60px; }
+  .target-cards { display:flex; flex-direction:column; gap:20px; }
+  .target-card {
+    display:flex; gap:20px; align-items:flex-start;
+    padding:28px; border-radius:20px;
+    border:1px solid rgba(255,255,255,0.08);
+    transition:border-color 0.3s, background 0.3s;
+  }
+  .target-card:hover { border-color:var(--pink); background:rgba(255,61,138,0.08); }
+  .target-badge {
+    flex-shrink:0; padding:6px 14px; border-radius:50px;
+    font-size:11px; font-weight:900; letter-spacing:1px;
+    white-space:nowrap;
+  }
+  .badge-core { background:var(--pink); color:white; }
+  .badge-potential { background:rgba(255,61,138,0.25); color:var(--pink-light); }
+  .badge-extra { background:rgba(255,255,255,0.12); color:rgba(255,255,255,0.6); }
+  .target-card-info h4 { font-size:16px; font-weight:700; color:white; margin-bottom:6px; }
+  .target-card-info p { font-size:13px; color:rgba(255,255,255,0.55); line-height:1.7; }
+  .target-chart-wrap {
+    position:relative;
+    background:rgba(255,255,255,0.04); border-radius:28px;
+    border:1px solid rgba(255,255,255,0.08);
+    overflow:hidden;
+  }
+  .target-chart-wrap img { width:100%; display:block; mix-blend-mode:lighten; }
+  .target-stat-row {
+    display:flex; gap:16px; margin-top:20px;
+  }
+  .target-stat {
+    flex:1; background:rgba(255,61,138,0.15); border:1px solid rgba(255,61,138,0.25);
+    border-radius:16px; padding:20px; text-align:center;
+  }
+  .target-stat strong { display:block; font-size:28px; font-weight:900; color:var(--pink); line-height:1; }
+  .target-stat span { font-size:11px; color:rgba(255,255,255,0.55); margin-top:4px; display:block; }
+
+  /* TECHNOLOGY (service flow) */
+  .techflow { background: linear-gradient(170deg, #fff5f9, #ffe4f0); }
+  .flow-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:60px; position:relative; }
+  .flow-grid::before {
+    content:''; position:absolute; top:36px; left:12%; right:12%; height:2px;
+    background: linear-gradient(to right, var(--pink-light), var(--pink));
+  }
+  .flow-step { text-align:center; padding:0 12px; position:relative; }
+  .flow-num {
+    width:72px; height:72px; border-radius:50%; background:white;
+    border:3px solid var(--pink-light); color:var(--pink);
+    font-size:22px; font-weight:900; display:flex; align-items:center; justify-content:center;
+    margin:0 auto 20px; box-shadow:0 8px 24px rgba(255,61,138,0.15);
+    font-family:'Bebas Neue',sans-serif; position:relative; z-index:1;
+    transition:all 0.3s;
+  }
+  .flow-step:hover .flow-num { background:var(--pink); color:white; border-color:var(--pink); }
+  .flow-step h4 { font-size:14px; font-weight:700; margin-bottom:8px; }
+  .flow-step p { font-size:12px; color:var(--gray); line-height:1.6; }
+
+  @media(max-width:768px) {
+    .product-panel.active, .target-layout { grid-template-columns:1fr; }
+    .flow-grid { grid-template-columns:repeat(2,1fr); }
+    .flow-grid::before { display:none; }
+  }
+
+
+  /* ── PRODUCT LINEUP V2 ────────────────────────────────────── */
+  .products-v2 { background: #0d0509; padding: 100px 5%; }
+  .products-v2 .section-tag  { color: var(--pink-light); }
+  .products-v2 .section-title { color: white; }
+  .products-v2 .section-desc  { color: rgba(255,255,255,0.55); }
+
+  .pv2-intro-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 48px; align-items: center; margin-top: 60px; margin-bottom: 80px;
+  }
+  .pv2-intro-img {
+    border-radius: 28px; overflow: hidden;
+    box-shadow: 0 0 80px rgba(255,61,138,0.35);
+    position: relative;
+    min-height: 320px;
+    background: linear-gradient(135deg, #1a0a10 0%, #2d0a1a 100%);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pv2-intro-img img { width:100%; display:block; }
+  .pv2-intro-img .pv2-badge-ai {
+    position: absolute; top: 20px; left: 20px;
+    background: var(--pink); color: white;
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    padding: 6px 16px; border-radius: 50px;
+  }
+  .pv2-intro-text h3 {
+    font-size: 28px; font-weight: 900; color: white; letter-spacing:-1px;
+    margin-bottom: 16px; line-height: 1.3;
+  }
+  .pv2-intro-text h3 em { color: var(--pink); font-style:normal; }
+  .pv2-intro-text p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 24px; }
+  .pv2-intro-bullets { display: flex; flex-direction: column; gap: 10px; }
+  .pv2-bullet {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 14px; color: rgba(255,255,255,0.75);
+  }
+  .pv2-bullet::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--pink); flex-shrink: 0;
+  }
+
+  /* 5대 카테고리 카드 그리드 */
+  .pv2-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr);
+    gap: 0; border-radius: 24px; overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .pv2-card {
+    position: relative; overflow: hidden; cursor: pointer;
+    aspect-ratio: 3/4;
+    transition: flex 0.4s;
+    background: linear-gradient(180deg, #1a0510 0%, #2a0818 100%);
+  }
+  .pv2-card img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform 0.5s, filter 0.4s;
+    filter: brightness(0.55) saturate(0.8);
+  }
+  .pv2-card:hover img { transform: scale(1.08); filter: brightness(0.7) saturate(1.1); }
+  .pv2-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%);
+  }
+  .pv2-card-body {
+    position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 18px;
+  }
+  .pv2-cat-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    color: var(--pink-light); margin-bottom: 4px; display: block;
+  }
+  .pv2-card-body h4 { font-size: 16px; font-weight: 900; color: white; margin-bottom: 8px; line-height:1.2; }
+  .pv2-card-items {
+    display: flex; flex-direction: column; gap: 4px;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .pv2-card:hover .pv2-card-items { max-height: 200px; }
+  .pv2-card-items span {
+    font-size: 11px; color: rgba(255,255,255,0.7);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .pv2-card-items span::before { content: '·'; color: var(--pink); font-size: 16px; }
+
+  /* 하단 태그 바 */
+  .pv2-tagbar {
+    display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; justify-content: center;
+  }
+  .pv2-tag {
+    padding: 8px 20px; border-radius: 50px;
+    border: 1px solid rgba(255,255,255,0.15);
+    font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 600;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .pv2-tag.hot { border-color: var(--pink); color: var(--pink); }
+  .pv2-tag.hot::before { content: '🔥'; font-size: 12px; }
+
+  /* ── TARGET V2 ───────────────────────────────────────────── */
+  .target-v2 { background: white; padding: 100px 5%; }
+
+  .tv2-top-banner {
+    border-radius: 28px; overflow: hidden;
+    background: linear-gradient(135deg, #FF3D8A 0%, #FF8EC2 50%, #FFB6D3 100%);
+    padding: 56px 64px; margin-bottom: 72px;
+    display: flex; align-items: center; justify-content: space-between; gap: 48px;
+  }
+  .tv2-banner-left h2 {
+    font-size: clamp(24px, 3vw, 40px); font-weight: 900;
+    color: white; letter-spacing: -1.5px; line-height: 1.25; margin-bottom: 16px;
+  }
+  .tv2-banner-left p { font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.7; max-width: 480px; }
+  .tv2-banner-stats { display: flex; gap: 24px; flex-shrink: 0; }
+  .tv2-bstat {
+    text-align: center; background: rgba(255,255,255,0.2);
+    border-radius: 20px; padding: 24px 28px; min-width: 100px;
+  }
+  .tv2-bstat strong { display: block; font-size: 36px; font-weight: 900; color: white; line-height: 1; font-family: 'Bebas Neue', sans-serif; }
+  .tv2-bstat span { font-size: 11px; color: rgba(255,255,255,0.8); margin-top: 6px; display: block; }
+
+  /* 3 target cards */
+  .tv2-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 60px; }
+  .tv2-card {
+    border-radius: 24px; overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    border: 1.5px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    position: relative;
+  }
+  .tv2-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(255,61,138,0.18); border-color: var(--pink-light); }
+  .tv2-card-header {
+    padding: 28px 28px 0;
+    display: flex; align-items: flex-start; justify-content: space-between;
+  }
+  .tv2-pct {
+    font-size: 56px; font-weight: 900; line-height: 1;
+    font-family: 'Bebas Neue', sans-serif;
+  }
+  .tv2-pct.core  { color: var(--pink); }
+  .tv2-pct.pot   { color: #FF8EC2; }
+  .tv2-pct.extra { color: #d0a0b8; }
+  .tv2-chip {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    padding: 5px 12px; border-radius: 50px; margin-top: 8px;
+  }
+  .chip-core  { background: var(--pink-pale);  color: var(--pink); border: 1px solid var(--pink-light); }
+  .chip-pot   { background: #fff0f8; color: #e05090; border: 1px solid #f0b8d4; }
+  .chip-extra { background: #f5f0f3; color: #b07090; border: 1px solid #e0c8d4; }
+  .tv2-card-body { padding: 20px 28px 28px; }
+  .tv2-card-body h3 { font-size: 18px; font-weight: 900; margin-bottom: 10px; letter-spacing: -0.5px; }
+  .tv2-card-body p  { font-size: 13px; color: var(--gray); line-height: 1.75; margin-bottom: 16px; }
+  .tv2-traits { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tv2-trait {
+    font-size: 11px; font-weight: 600; padding: 4px 12px;
+    border-radius: 50px; background: var(--pink-pale); color: var(--pink);
+    border: 1px solid var(--pink-light);
+  }
+
+  /* 소비 패턴 바 */
+  .tv2-pattern { background: var(--gray-light); border-radius: 24px; padding: 44px 48px; margin-bottom: 60px; }
+  .tv2-pattern h3 { font-size: 20px; font-weight: 900; margin-bottom: 28px; letter-spacing: -0.5px; }
+  .tv2-bars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+  .tv2-bar-item { }
+  .tv2-bar-label { font-size: 13px; font-weight: 700; margin-bottom: 10px; display: flex; justify-content: space-between; }
+  .tv2-bar-label span { color: var(--pink); }
+  .tv2-bar-track { height: 8px; background: #e8dfe4; border-radius: 50px; overflow: hidden; }
+  .tv2-bar-fill  { height: 100%; border-radius: 50px; background: linear-gradient(to right, var(--pink), #FF8EC2); }
+  .tv2-bar-desc  { font-size: 12px; color: var(--gray); margin-top: 8px; line-height: 1.5; }
+
+  /* chart + insight row */
+  .tv2-bottom { display: grid; grid-template-columns: 1fr 1.3fr; gap: 32px; align-items: start; }
+  .tv2-chart-box {
+    background: white; border: 1.5px solid var(--border); border-radius: 24px;
+    padding: 32px; text-align: center;
+  }
+  .tv2-chart-box img { width: 100%; max-width: 360px; display: block; margin: 0 auto; }
+  .tv2-insights { display: flex; flex-direction: column; gap: 16px; }
+  .tv2-insight {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 20px 24px; border-radius: 18px;
+    background: white; border: 1.5px solid var(--border);
+    transition: border-color 0.2s;
+  }
+  .tv2-insight:hover { border-color: var(--pink-light); }
+  .tv2-insight-icon { font-size: 24px; flex-shrink: 0; }
+  .tv2-insight h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .tv2-insight p  { font-size: 12px; color: var(--gray); line-height: 1.6; }
+
+  @media (max-width: 768px) {
+    .pv2-intro-grid, .pv2-grid { grid-template-columns: 1fr; }
+    .pv2-grid { grid-template-columns: repeat(2,1fr); }
+    .tv2-top-banner { flex-direction: column; padding: 36px 28px; }
+    .tv2-banner-stats { width: 100%; justify-content: space-between; }
+    .tv2-cards { grid-template-columns: 1fr; }
+    .tv2-bars { grid-template-columns: repeat(2,1fr); }
+    .tv2-bottom { grid-template-columns: 1fr; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Gleer<span>24시 무인 뷰티샵</span></div>
+  <div class="nav-links">
+    <a href="#market">왜 글리어인가</a>
+    <a href="#target">타겟 고객</a>
+    <a href="#products">제품 라인업</a>
+    <a href="#process">창업 프로세스</a>
+    <a href="#partner">파트너 혜택</a>
+    <a href="#contact">입점문의</a>
+  </div>
+  <a href="#contact" class="nav-cta">무료 상담 신청</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-img-area"><div class="hero-img-placeholder">IMAGE</div></div>
+  <div class="hero-content fade-up">
+    <div class="hero-badge">🇰🇷 K-BEAUTY × AI TECHNOLOGY</div>
+    <h1>인건비 ZERO<em>24시 무인 뷰티샵</em>글리어</h1>
+    <p class="hero-sub">
+      스마트폰 하나로 관리하는 AI 기반 무인 화장품 매장.<br>
+      잠자는 동안에도 수익이 쌓입니다.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">무료 창업 상담 신청</a>
+      <a href="#advantage" class="btn-outline">글리어 알아보기</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET -->
+<section class="market" id="market">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="center fade-up">
+      <span class="section-tag">MARKET INSIGHT</span>
+      <h2 class="section-title">지금은 무인점포의 시대</h2>
+      <p class="section-desc">지속적인 인건비 상승과 비대면 소비 확산으로 무인 창업이 빠르게 성장하고 있습니다.</p>
+    </div>
+    <div class="market-grid fade-up">
+      <div class="market-card">
+        <div class="num">4배↑</div>
+        <h3>무인매장 창업 급증</h3>
+        <p>최저임금 연평균 5% 상승과 구인난 심화로 무인매장 창업은 5년 만에 4배 이상 급증했습니다.</p>
+      </div>
+      <div class="market-card">
+        <div class="num">18조</div>
+        <h3>K-뷰티 시장 규모</h3>
+        <p>국내 뷰티 시장은 지속적인 성장을 거듭하며 18조원 규모로 성장. 해외에서도 K-뷰티 인기가 폭발적입니다.</p>
+      </div>
+      <div class="market-card">
+        <div class="num">24H</div>
+        <h3>심야 뷰티 공백 독점</h3>
+        <p>기존 뷰티 매장이 닫는 22시~10시, 글리어가 24시간 뷰티 수요를 독점합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- GLEER ADVANTAGE -->
+<section class="advantage" id="advantage">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="center fade-up">
+      <span class="section-tag">GLEER ADVANTAGE</span>
+      <h2 class="section-title">글리어를 선택해야 하는 이유</h2>
+      <p class="section-desc">단순한 자판기가 아닙니다. AI와 데이터가 만든 스마트 뷰티 플랫폼입니다.</p>
+    </div>
+    <div class="adv-grid fade-up">
+      <div class="adv-card">
+        <div class="adv-img-placeholder">IMAGE</div>
+        <div class="adv-card-body">
+          <div class="adv-num">FEATURE 01</div>
+          <h3>AI 스마트 뷰티 어드바이저</h3>
+          <p>키오스크 내장 카메라로 5초 내 피부 진단. 수분·유분·주름·톤을 분석해 맞춤 제품을 추천하여 구매 전환율을 극대화합니다.</p>
+        </div>
+      </div>
+      <div class="adv-card">
+        <div class="adv-img-placeholder">IMAGE</div>
+        <div class="adv-card-body">
+          <div class="adv-num">FEATURE 02</div>
+          <h3>완벽한 보안 시스템</h3>
+          <p>모든 제품이 자판기 내에 안전하게 보관됩니다. CCTV와 도난 방지 시스템으로 고가 제품도 안심하고 운영 가능합니다.</p>
+        </div>
+      </div>
+      <div class="adv-card">
+        <div class="adv-img-placeholder">IMAGE</div>
+        <div class="adv-card-body">
+          <div class="adv-num">FEATURE 03</div>
+          <h3>24시간 스마트폰 원격 관리</h3>
+          <p>앱 하나로 실시간 매출·재고를 한눈에 파악. 원격 기기 제어까지 가능해 매장에 나올 필요가 없습니다.</p>
+        </div>
+      </div>
+      <div class="adv-card">
+        <div class="adv-img-placeholder">IMAGE</div>
+        <div class="adv-card-body">
+          <div class="adv-num">FEATURE 04</div>
+          <h3>자동화 재고·CS 시스템</h3>
+          <p>판매 데이터 기반 재고 자동 예측·알림, 본사 자동 발주 연동. 고객 CS도 본사 담당자가 직접 처리합니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TARGET V2 -->
+<section class="target-v2" id="target">
+  <div style="max-width:1260px;margin:0 auto;">
+
+    <!-- 상단 배너 -->
+    <div class="tv2-top-banner fade-up">
+      <div class="tv2-banner-left">
+        <h2>명확하고 충성도 높은<br>타겟 고객층이 기다리고 있습니다</h2>
+        <p>트렌드에 민감하고 즉각적인 소비를 즐기는 2030 세대가 핵심 타겟.<br>
+        접근성을 중시하는 10대부터 K-뷰티를 찾는 외국인 관광객까지, 글리어의 고객 스펙트럼은 넓고 견고합니다.</p>
+      </div>
+      <div class="tv2-banner-stats">
+        <div class="tv2-bstat"><strong>85%</strong><span>여성 고객 비율</span></div>
+        <div class="tv2-bstat"><strong>2030</strong><span>핵심 연령대</span></div>
+        <div class="tv2-bstat"><strong>24H</strong><span>구매 가능</span></div>
+      </div>
+    </div>
+
+    <!-- 3대 타겟 카드 -->
+    <div class="tv2-cards fade-up">
+
+      <!-- CORE -->
+      <div class="tv2-card">
+        <div class="tv2-card-header">
+          <div>
+            <div class="tv2-pct core">60%</div>
+          </div>
+          <div class="tv2-chip chip-core">CORE TARGET</div>
+        </div>
+        <div class="tv2-card-body">
+          <h3>2030 여성</h3>
+          <p>
+            트렌드에 민감하고 즉각적 소비를 즐기는 MZ세대. AI 피부 진단이라는 강력한 체험 요소와
+            트렌디한 인디 브랜드 라인업이 이들의 발걸음을 끌어당깁니다.
+            인스타그래머블한 핑크 공간은 SNS 바이럴을 자연스럽게 유도합니다.
+          </p>
+          <div class="tv2-traits">
+            <span class="tv2-trait">AI 피부 진단 체험</span>
+            <span class="tv2-trait">인디 브랜드 선호</span>
+            <span class="tv2-trait">SNS 공유 활발</span>
+            <span class="tv2-trait">즉각 구매 결정</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- POTENTIAL -->
+      <div class="tv2-card">
+        <div class="tv2-card-header">
+          <div>
+            <div class="tv2-pct pot">25%</div>
+          </div>
+          <div class="tv2-chip chip-pot">POTENTIAL</div>
+        </div>
+        <div class="tv2-card-body">
+          <h3>10대 여성</h3>
+          <p>
+            뷰티 입문 세대로 가성비와 접근성을 최우선으로 따집니다.
+            부담 없는 가격대의 색조·스킨케어로 첫 구매를 유도하고,
+            브랜드 팬층을 조기에 확보할 수 있습니다. 이 세대의 충성도는 장기 수익의 기반이 됩니다.
+          </p>
+          <div class="tv2-traits">
+            <span class="tv2-trait">가성비 중심 소비</span>
+            <span class="tv2-trait">뷰티 입문 세대</span>
+            <span class="tv2-trait">접근성 최우선</span>
+            <span class="tv2-trait">브랜드 충성도 형성</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXTRA -->
+      <div class="tv2-card">
+        <div class="tv2-card-header">
+          <div>
+            <div class="tv2-pct extra">15%</div>
+          </div>
+          <div class="tv2-chip chip-extra">EXTRA</div>
+        </div>
+        <div class="tv2-card-body">
+          <h3>외국인 관광객 &amp; 남성</h3>
+          <p>
+            K-뷰티 제품을 직접 구매하려는 외국인 관광객과
+            그루밍에 관심이 높아진 남성 고객층. 영어·중국어 UI와
+            남성 전용 케어 라인업으로 기존 뷰티 매장이 놓치는 수요를 흡수합니다.
+          </p>
+          <div class="tv2-traits">
+            <span class="tv2-trait">K-뷰티 구매 목적</span>
+            <span class="tv2-trait">다국어 UI 지원</span>
+            <span class="tv2-trait">남성 케어 라인</span>
+            <span class="tv2-trait">고단가 제품 수요</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- PRODUCT LINEUP V2 -->
+<section class="products-v2" id="products">
+  <div style="max-width:1260px;margin:0 auto;">
+
+    <div class="center fade-up">
+      <span class="section-tag">PRODUCT LINEUP</span>
+      <h2 class="section-title">24시간, 전 연령대를 케어하는<br>맞춤형 프리미엄 제품 라인업</h2>
+      <p class="section-desc">AI 피부 진단과 실시간 연동되는 5대 핵심 카테고리. 단순 편의품이 아닌, 고객이 일부러 찾아오게 만드는 프리미엄 큐레이션입니다.</p>
+    </div>
+
+    <!-- 인트로: AI 연동 설명 + 핵심 어필 -->
+    <!-- 5대 카테고리 카드 -->
+    <div class="pv2-grid fade-up">
+      <!-- 스킨케어 -->
+      <div class="pv2-card">
+
+        <div class="pv2-overlay"></div>
+        <div class="pv2-card-body">
+          <span class="pv2-cat-label">SKIN CARE</span>
+          <h4>기초<br>스킨케어</h4>
+          <div class="pv2-card-items">
+            <span>AI 진단 연동 맞춤 앰플</span>
+            <span>고기능성 수분크림</span>
+            <span>긴급 트러블 패치</span>
+            <span>미스트 · 마스크팩</span>
+          </div>
+        </div>
+      </div>
+      <!-- 메이크업 -->
+      <div class="pv2-card">
+
+        <div class="pv2-overlay"></div>
+        <div class="pv2-card-body">
+          <span class="pv2-cat-label">MAKE-UP</span>
+          <h4>색조<br>메이크업</h4>
+          <div class="pv2-card-items">
+            <span>트렌디 인디 브랜드 색조</span>
+            <span>수정 화장용 쿠션</span>
+            <span>포인트 클렌징</span>
+            <span>립 · 아이 메이크업</span>
+          </div>
+        </div>
+      </div>
+      <!-- 맨즈케어 -->
+      <div class="pv2-card">
+
+        <div class="pv2-overlay"></div>
+        <div class="pv2-card-body">
+          <span class="pv2-cat-label">MEN'S CARE</span>
+          <h4>남성<br>그루밍</h4>
+          <div class="pv2-card-items">
+            <span>올인원 로션 &amp; 스킨</span>
+            <span>남성 전용 비비크림</span>
+            <span>데일리 그루밍 키트</span>
+            <span>쉐이빙 &amp; 애프터케어</span>
+          </div>
+        </div>
+      </div>
+      <!-- 프래그런스 -->
+      <div class="pv2-card">
+
+        <div class="pv2-overlay"></div>
+        <div class="pv2-card-body">
+          <span class="pv2-cat-label">FRAGRANCE</span>
+          <h4>프리미엄<br>프래그런스</h4>
+          <div class="pv2-card-items">
+            <span>휴대용 니치 향수</span>
+            <span>레이어링 고체 향수</span>
+            <span>섬유 탈취제</span>
+            <span>바디 미스트</span>
+          </div>
+        </div>
+      </div>
+      <!-- 위생·소품 -->
+      <div class="pv2-card">
+
+        <div class="pv2-overlay"></div>
+        <div class="pv2-card-body">
+          <span class="pv2-cat-label">HYGIENE &amp; TOOLS</span>
+          <h4>위생·<br>뷰티 소품</h4>
+          <div class="pv2-card-items">
+            <span>생리대 &amp; 여성용품</span>
+            <span>클렌징 티슈 · 화장솜</span>
+            <span>여행용 미니 키트</span>
+            <span>메이크업 퍼프 · 툴</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 하단 태그 바 -->
+    <div class="pv2-tagbar fade-up">
+      <div class="pv2-tag hot">높은 마진율</div>
+      <div class="pv2-tag hot">AI 추천 연동</div>
+      <div class="pv2-tag hot">심야 배달 가능</div>
+      <div class="pv2-tag">64종 상품 진열</div>
+      <div class="pv2-tag">최대 768개 재고</div>
+      <div class="pv2-tag">자동 재고 발주</div>
+      <div class="pv2-tag">본사 MD 큐레이션</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- TECH FLOW -->
+<section class="techflow">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="center fade-up">
+      <span class="section-tag">SERVICE FLOW</span>
+      <h2 class="section-title">AI가 진단하고, 알고리즘이 추천하며,<br>배달 앱이 영업합니다</h2>
+      <p class="section-desc">데이터 흐름과 고객 경험이 통합된 완전 자동화 프로세스. 점주의 개입 없이 모든 것이 작동합니다.</p>
+    </div>
+
+    <!-- AI 추천 소개 -->
+    <div class="fade-up" style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; margin-top:60px; margin-bottom:80px;">
+      <div style="border-radius:28px; overflow:hidden; background:linear-gradient(135deg,#3d0a1f,#5a0a2a); min-height:320px; display:flex; align-items:center; justify-content:center; position:relative; box-shadow:0 0 60px rgba(255,61,138,0.25);">
+        <span style="font-size:13px; font-weight:700; color:rgba(255,61,138,0.35); letter-spacing:3px;">IMAGE</span>
+        <div style="position:absolute; top:20px; left:20px; background:var(--pink); color:white; font-size:11px; font-weight:700; letter-spacing:2px; padding:6px 16px; border-radius:50px;">✦ AI RECOMMENDED</div>
+      </div>
+      <div>
+        <h3 style="font-size:30px; font-weight:900; color:var(--dark); letter-spacing:-1px; margin-bottom:16px; line-height:1.3;">점원 없이도<br><em style="color:var(--pink); font-style:normal;">전문가급 제품 추천</em>이 가능합니다</h3>
+        <p style="font-size:15px; color:var(--gray); line-height:1.8; margin-bottom:24px;">
+          키오스크 내장 카메라가 고객의 피부를 5초 안에 분석합니다.<br>
+          수분·유분·주름·톤 데이터를 매장 재고와 실시간 매칭해<br>
+          그 자리에서 맞춤 제품을 추천—구매 전환율이 극적으로 높아집니다.
+        </p>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div style="display:flex; align-items:center; gap:12px; font-size:14px; color:var(--dark);">
+            <span style="width:6px; height:6px; border-radius:50%; background:var(--pink); flex-shrink:0; display:inline-block;"></span>피부 진단 데이터 기반 개인 맞춤 큐레이션
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; font-size:14px; color:var(--dark);">
+            <span style="width:6px; height:6px; border-radius:50%; background:var(--pink); flex-shrink:0; display:inline-block;"></span>재고 부족 시 대체 제품 자동 추천
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; font-size:14px; color:var(--dark);">
+            <span style="width:6px; height:6px; border-radius:50%; background:var(--pink); flex-shrink:0; display:inline-block;"></span>구매 이력 축적 → 단골 고객 재방문율 향상
+          </div>
+          <div style="display:flex; align-items:center; gap:12px; font-size:14px; color:var(--dark);">
+            <span style="width:6px; height:6px; border-radius:50%; background:var(--pink); flex-shrink:0; display:inline-block;"></span>AI 진단 데이터 자산화 → 본사 구독·제조사 판매 연계
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flow-grid fade-up">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <h4>AI Skin Diagnosis</h4>
+        <p>키오스크 안면 인식 및 피부 상태 측정<br>(수분·유분·주름·톤 5초 분석)</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <h4>Smart Curation</h4>
+        <p>피부 데이터 + 재고 매칭 알고리즘으로 전문가급 제품 추천</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <h4>Order & Payment</h4>
+        <p>키오스크 / 모바일 앱 원클릭 결제. 현금·카드·간편결제 지원</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <h4>Auto Pickup / Delivery</h4>
+        <p>무인 픽업박스 수령 또는 배달 앱 연동 즉시 배달</p>
+      </div>
+    </div>
+    <div class="fade-up" style="margin-top:60px; display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center;">
+      <div style="border-radius:28px; overflow:hidden; box-shadow:0 24px 64px rgba(255,61,138,0.18);">
+<div style="width:100%;height:300px;background:linear-gradient(135deg,#ffe8f3,#ffd0e8);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:rgba(255,61,138,0.4);letter-spacing:3px;">IMAGE</div>
+      </div>
+      <div>
+        <h3 style="font-size:24px; font-weight:900; letter-spacing:-1px; margin-bottom:16px;">
+          심야 뷰티 퀵커머스<br><em style="color:var(--pink); font-style:normal;">최초 선점의 기회</em>
+        </h3>
+        <p style="font-size:15px; color:var(--gray); line-height:1.8; margin-bottom:24px;">기존 뷰티 매장이 문을 닫는 <strong>22:00 ~ 10:00의 골든타임</strong>, 글리어가 도심 뷰티 수요를 독식합니다.</p>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="display:flex; gap:12px; align-items:center; padding:16px; background:var(--pink-pale); border-radius:14px; border:1px solid var(--pink-light);">
+            <span style="font-size:20px;">🚴</span>
+            <div><strong style="font-size:14px;">도심형 물류 거점 (MFC) 활용</strong><br><span style="font-size:13px; color:var(--gray);">배달의민족·쿠팡이츠 연동으로 배달 영업까지 자동화</span></div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:center; padding:16px; background:var(--pink-pale); border-radius:14px; border:1px solid var(--pink-light);">
+            <span style="font-size:20px;">🔐</span>
+            <div><strong style="font-size:14px;">Full-Auto 픽업 시스템</strong><br><span style="font-size:13px; color:var(--gray);">라이더 전용 인증 코드로 365일 24시간 완전 무인 출고</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANALYSIS -->
+<section class="analysis" id="process">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="center fade-up">
+      <span class="section-tag">LOCATION SUPPORT</span>
+      <h2 class="section-title">철저한 상권분석으로<br>사업의 시작을 함께합니다</h2>
+      <p class="section-desc">창업비용과 지역 상황에 특화된 분석 리포트를 제공하며, 최고의 입지를 찾는 창업 파트너를 파견해 드립니다.</p>
+    </div>
+    <div class="analysis-grid fade-up">
+      <div class="analysis-card">
+        <span class="icon">🚶</span>
+        <h4>유동인구 분석</h4>
+        <p>시간대별·연령별 유동인구를 분석해 최적의 입지를 선정합니다.</p>
+      </div>
+      <div class="analysis-card">
+        <span class="icon">👥</span>
+        <h4>지역 인구통계 분석</h4>
+        <p>주변 상주인구의 연령·성별·소득 분포를 분석해 타겟 적합성을 검증합니다.</p>
+      </div>
+      <div class="analysis-card">
+        <span class="icon">🏪</span>
+        <h4>경쟁환경 분석</h4>
+        <p>반경 내 경쟁 뷰티 매장 현황을 파악해 시장 포화도를 사전에 확인합니다.</p>
+      </div>
+      <div class="analysis-card">
+        <span class="icon">📍</span>
+        <h4>매장 입지 분석</h4>
+        <p>가시성·접근성·임대료 대비 수익성을 종합 평가해 최적의 매장 위치를 제안합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section class="roi" id="partner">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="center fade-up">
+      <span class="section-tag">PARTNER BENEFITS</span>
+      <h2 class="section-title" style="color:var(--dark)">파트너 혜택</h2>
+      <p class="section-desc">합리적인 초기 비용으로 빠르게 수익을 실현하세요.</p>
+    </div>
+    <!-- 상단 임팩트 숫자 -->
+    <div class="fade-up" style="text-align:center; margin-bottom:48px;">
+      <div style="display:inline-block; background:white; border:1px solid var(--border); border-radius:24px; padding:32px 64px; box-shadow:0 8px 32px rgba(255,61,138,0.1);">
+        <div style="font-size:13px; color:var(--pink); letter-spacing:3px; font-weight:700; margin-bottom:8px;">TOTAL BENEFIT</div>
+        <div style="font-size:72px; font-weight:900; color:var(--pink); line-height:1; font-family:'Bebas Neue',sans-serif;">13,000,000<span style="font-size:36px;">원</span></div>
+        <div style="font-size:14px; color:var(--gray); margin-top:8px;">본사 지원 혜택 합계 — 한시적 운영으로 조기 종료될 수 있습니다</div>
+      </div>
+    </div>
+
+    <div class="roi-layout fade-up">
+      <!-- 왼쪽: 혜택 항목 -->
+      <div class="roi-card">
+        <h3>파트너 창업 혜택 내용</h3>
+        <div class="roi-item">
+          <span class="label">가맹비</span>
+          <div style="display:flex; align-items:center; gap:16px;">
+            <span style="font-size:15px; color:#ccc; text-decoration:line-through;">5,000,000원</span>
+            <span class="value">면제</span>
+          </div>
+        </div>
+        <div class="roi-item">
+          <span class="label">교육비</span>
+          <div style="display:flex; align-items:center; gap:16px;">
+            <span style="font-size:15px; color:#ccc; text-decoration:line-through;">2,000,000원</span>
+            <span class="value">면제</span>
+          </div>
+        </div>
+        <div class="roi-item">
+          <span class="label">관리비</span>
+          <div style="display:flex; align-items:center; gap:16px;">
+            <span style="font-size:15px; color:#ccc; text-decoration:line-through;">3,000,000원</span>
+            <span class="value">면제</span>
+          </div>
+        </div>
+        <div class="roi-item">
+          <span class="label">보증금</span>
+          <div style="display:flex; align-items:center; gap:16px;">
+            <span style="font-size:15px; color:#ccc; text-decoration:line-through;">3,000,000원</span>
+            <span class="value">면제</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 오른쪽: 수익 지표 -->
+      <div class="roi-card">
+        <h3>예상 수익 지표</h3>
+        <div class="roi-item"><span class="label">평균 투자금 회수 기간</span><span class="value">12개월</span></div>
+        <div class="roi-item"><span class="label">평균 매출 이익률</span><span class="value">45~50%</span></div>
+        <div class="roi-item"><span class="label">운영 가능 시간</span><span class="value">24시간 365일</span></div>
+        <div class="roi-item"><span class="label">점주 상주 여부</span><span class="value">불필요</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="center fade-up">
+      <span class="section-tag" style="color:rgba(255,255,255,0.7)">FREE CONSULTATION</span>
+      <h2 class="section-title">지금 바로 무료 창업 상담을<br>신청하세요</h2>
+      <p class="section-desc">전담 창업 파트너가 1:1로 맞춤 상담을 제공합니다. 부담 없이 문의해 주세요.</p>
+    </div>
+    <div class="contact-layout fade-up">
+      <div class="contact-info">
+        <h3>언제든지 연락 주세요</h3>
+        <div class="contact-detail"><span class="ico">📞</span><span><strong>1877-1380</strong><br><small style="opacity:0.7">평일 09:00 ~ 18:00</small></span></div>
+        <div class="contact-detail"><span class="ico">📧</span><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d5bdb0b9a595bbb0ada1b6bab8b8b0a7b6b0fbb6bafbbea7">[email&#160;protected]</a></span></div>
+        <div class="contact-detail"><span class="ico">📍</span><span>경기도 성남시 분당구 산운로160번길 4, 101호</span></div>
+        <div style="margin-top:40px; background:rgba(255,255,255,0.15); border-radius:20px; padding:28px;">
+          <p style="font-size:14px; line-height:2; color:rgba(255,255,255,0.9);">
+            ✅ 상담 신청 후 24시간 내 연락<br>
+            ✅ 맞춤 상권분석 무료 제공<br>
+            ✅ 창업 전 과정 1:1 전담 지원<br>
+            ✅ 부담 없는 무료 상담
+          </p>
+        </div>
+      </div>
+      <div class="contact-form fade-up">
+        <h3 style="font-size:20px; font-weight:700; margin-bottom:24px;">창업 상담 신청</h3>
+
+        <!-- 성공 메시지 (기본 숨김) -->
+        <div id="form-success" style="display:none; text-align:center; padding:40px 20px;">
+          <div style="font-size:48px; margin-bottom:16px;">🎉</div>
+          <h4 style="font-size:20px; font-weight:700; margin-bottom:8px;">상담 신청이 완료됐습니다!</h4>
+          <p style="font-size:14px; color:var(--gray); line-height:1.7;">
+            담당자가 <strong>24시간 이내</strong>에 연락드릴게요.<br>
+            빠른 상담을 원하시면 <strong>1877-1380</strong>으로 전화주세요.
+          </p>
+        </div>
+
+        <!-- 폼 (제출 후 숨김) -->
+        <div id="form-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label>이름 *</label>
+              <input type="text" id="f-name" placeholder="홍길동">
+            </div>
+            <div class="form-group">
+              <label>연락처 *</label>
+              <input type="tel" id="f-phone" placeholder="010-0000-0000">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>거주 지역</label>
+              <input type="text" id="f-region" placeholder="서울 강남구">
+            </div>
+            <div class="form-group">
+              <label>창업 예정 지역</label>
+              <input type="text" id="f-target-region" placeholder="경기 성남시">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>창업 예정 시기</label>
+            <select id="f-timing">
+              <option value="">선택해주세요</option>
+              <option>1개월 이내</option>
+              <option>3개월 이내</option>
+              <option>6개월 이내</option>
+              <option>미정</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>문의 내용 (선택)</label>
+            <textarea id="f-message" placeholder="궁금한 점을 자유롭게 적어주세요."></textarea>
+          </div>
+          <button class="form-submit" id="form-btn" onclick="submitForm()">무료 상담 신청하기 →</button>
+          <p id="form-error" style="display:none; color:#e03060; font-size:13px; text-align:center; margin-top:10px;">이름과 연락처는 필수 항목입니다.</p>
+          <p class="form-note">입력하신 정보는 창업 상담 목적으로만 사용됩니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-info">
+      <div class="footer-logo">Gleer</div>
+      <p><strong style="color:rgba(255,255,255,0.7)">주식회사 넥스트커머스</strong></p>
+      <p>대표자: 최정혁 &nbsp;|&nbsp; 사업자등록번호: 131111-0716406</p>
+      <p>경기도 성남시 분당구 산운로160번길 4, 101호(운중동)</p>
+      <p>대표번호: 1877-1380 &nbsp;|&nbsp; 이메일: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="29414c455969474c515d4a4644444c5b4a4c074a4607425b">[email&#160;protected]</a></p>
+    </div>
+    <div class="footer-right">
+      <p style="color:rgba(255,255,255,0.3); font-size:12px; margin-top:8px;">© 2025 NextCommerce. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxODuXikEa-0-cSbfZz1faooEYw2EqfzZN0br6RUMQXrM6lN6D-hXDFFC60d9BfIoWG/exec';
+
+  async function submitForm() {
+    const name    = document.getElementById('f-name').value.trim();
+    const phone   = document.getElementById('f-phone').value.trim();
+    const errEl   = document.getElementById('form-error');
+
+    // 필수값 체크
+    if (!name || !phone) {
+      errEl.style.display = 'block';
+      return;
+    }
+    errEl.style.display = 'none';
+
+    // 버튼 로딩 상태
+    const btn = document.getElementById('form-btn');
+    btn.textContent = '전송 중...';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+
+    const payload = {
+      name,
+      phone,
+      region:       document.getElementById('f-region').value.trim(),
+      targetRegion: document.getElementById('f-target-region').value.trim(),
+      timing:       document.getElementById('f-timing').value,
+      message:      document.getElementById('f-message').value.trim(),
+    };
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',   // Apps Script는 CORS 헤더를 보내지 않아 no-cors 필요
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      // no-cors라 응답 확인 불가 → 전송 자체가 됐으면 성공으로 처리
+      document.getElementById('form-body').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } catch (err) {
+      btn.textContent = '무료 상담 신청하기 →';
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.\n직접 문의: 1877-1380');
+    }
+  }
+
+  function showProduct(id) {
+    document.querySelectorAll('.product-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.prod-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(
+
+</body>
+</html>
